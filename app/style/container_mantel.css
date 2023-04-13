@@ -8,10 +8,18 @@
     max-width: 100%;
     max-height: 653px;
 }
+.container_card_espera{
+    height: calc(40vh/5);
+    width: 100%;
+}
 .card_activa{
     margin-top: 10%;
     height: 90%;
     width: 90%;
+    font-size: x-large;
+}
+.card_espera{
+    width: 100%;
     font-size: x-large;
 }
 .img_filosofo_activa{
@@ -19,6 +27,12 @@
     object-position: 0 0;
     height: 100%;
     width: 100%;
+}
+.img_filosofo_espera{
+    object-fit: cover;
+    object-position: 0 0;
+    height: 100%;
+    width: calc(60vw/5);
 }
 .comedor{
     height: 100%;
