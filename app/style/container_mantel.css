@@ -1,0 +1,36 @@
+@import url('variables.css');
+.container_mantel{
+    background: url('../img/mantel.jpg') bottom center scroll;
+    box-shadow: 0px 4px 20px 20px rgba(0, 0, 0, 0.25);
+    padding: -10;
+    margin: -10;
+    height: 60vh;
+    max-width: 100%;
+    max-height: 653px;
+}
+.card_activa{
+    margin-top: 10%;
+    height: 90%;
+    width: 90%;
+    font-size: x-large;
+}
+.img_filosofo_activa{
+    object-fit: cover;
+    object-position: 0 0;
+    height: 100%;
+    width: 100%;
+}
+.comedor{
+    height: 100%;
+    width: 100%;
+}
+.palillo{
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+}
+.plato{
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+}

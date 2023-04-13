@@ -1,0 +1,13 @@
+@import url('variables.css');
+.img_filosofo{
+    object-fit: cover;
+    object-position: 0 0;
+    max-width: calc(100% - 40px); /* El 40px es el padding de la card */
+    height: auto;
+    max-height: 20vh;
+    width: auto;
+    max-width: 320px;
+}
+.card-img-overlay{
+    padding: 0;
+}

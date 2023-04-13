@@ -1,0 +1,6 @@
+@import url('variables.css');
+body{
+    background-color: var(--verde);
+    width: 100vw;
+    height: 100vh;
+}
