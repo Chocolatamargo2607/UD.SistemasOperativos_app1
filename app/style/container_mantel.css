@@ -11,6 +11,7 @@
 .container_card_espera{
     height: calc(40vh/5);
     width: 100%;
+    padding-top: 1rem;
 }
 .card_activa{
     margin-top: 10%;
@@ -19,8 +20,8 @@
     font-size: x-large;
 }
 .card_espera{
-    width: 100%;
-    font-size: x-large;
+    width: 180px;
+    font-size: large;
 }
 .img_filosofo_activa{
     object-fit: cover;
@@ -28,7 +29,7 @@
     height: 100%;
     width: 100%;
 }
-.img_filosofo_espera{
+.img_filosofo_esperaa{
     object-fit: cover;
     object-position: 0 0;
     height: 100%;
@@ -47,4 +48,42 @@
     object-fit: contain;
     height: 100%;
     width: 100%;
+}
+@media screen and (max-width: 768px) {
+    .card_activa{
+        margin-top: 10%;
+        height: 90%;
+        width: 90%;
+        font-size: x-large;
+    }
+    .card_espera{
+        width: 180px;
+        font-size: large;
+    }
+    .img_filosofo_activa{
+        object-fit: cover;
+        object-position: 0 0;
+        height: 100%;
+        width: 100%;
+    }
+    .img_filosofo_esperaa{
+        object-fit: cover;
+        object-position: 0 0;
+        height: 100%;
+        width: calc(60vw/5);
+    }
+    .comedor{
+        height: 100%;
+        width: 100%;
+    }
+    .palillo{
+        object-fit: contain;
+        height: 100%;
+        width: 100%;
+    }
+    .plato{
+        object-fit: contain;
+        height: 100%;
+        width: 100%;
+    }
 }
