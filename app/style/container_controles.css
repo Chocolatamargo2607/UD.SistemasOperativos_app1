@@ -1,1 +1,35 @@
 @import url('variables.css');
+.container_controles{
+    background-color: rgba(81, 63, 63, 0.5);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 5rem;
+}
+.container_col_c{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.col_c{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.btn_play{
+    width: calc(42vw/3);
+    height: calc(8vh);
+    cursor: pointer;
+}
+.btn_play>i{
+    width: 100%;
+    height: 100%;
+    zoom: 1.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

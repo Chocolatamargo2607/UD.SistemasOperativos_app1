@@ -17,7 +17,7 @@
         <section class="container">
             <div class="row  w-100 d-flex justify-content-around">
                 <div class="col-6 col-sm-4 col-xl-2">
-                    <div class="card text-bg-dark mb-2 shadow">
+                    <div id="card_1" class="card_general card_lista card text-bg-dark mb-2 shadow">
                         <img src="./app/img/filosofo.jpg" class="card-img img_filosofo" alt="filosofo">
                         <div class="card-img-overlay d-flex justify-content-end">
                             <table>
@@ -29,7 +29,7 @@
                                 <tbody>
                                     <tr>
                                         <td>Tiempo:</td>
-                                        <td><i class="bi bi-infinity"></i></td>
+                                        <td><span class="temporizador">5s</span></td>
                                     </tr>
                                     <tr>
                                         <td>Proceso:</td>
@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div class="col-6 col-sm-4 col-xl-2">
-                    <div class="card text-bg-dark mb-2 shadow">
+                    <div id="card_2" class="card_general card_lista card text-bg-dark mb-2 shadow">
                         <img src="./app/img/filosofo.jpg" class="card-img img_filosofo" alt="filosofo">
                         <div class="card-img-overlay d-flex justify-content-end">
                             <table>
@@ -57,7 +57,7 @@
                                 <tbody>
                                     <tr>
                                         <td>Tiempo:</td>
-                                        <td><i class="bi bi-infinity"></i></td>
+                                        <td><span class="temporizador">5s</span></td>
                                     </tr>
                                     <tr>
                                         <td>Proceso:</td>
@@ -73,7 +73,7 @@
                     </div>
                 </div>
                 <div class="col-6 col-sm-4 col-xl-2">
-                    <div class="card text-bg-dark mb-2 shadow">
+                    <div id="card_3" class="card_general card_lista card text-bg-dark mb-2 shadow">
                         <img src="./app/img/filosofo.jpg" class="card-img img_filosofo" alt="filosofo">
                         <div class="card-img-overlay d-flex justify-content-end">
                             <table>
@@ -85,7 +85,7 @@
                                 <tbody>
                                     <tr>
                                         <td>Tiempo:</td>
-                                        <td><i class="bi bi-infinity"></i></td>
+                                        <td><span class="temporizador">5s</span></td>
                                     </tr>
                                     <tr>
                                         <td>Proceso:</td>
@@ -101,7 +101,7 @@
                     </div>
                 </div>
                 <div class="col-6 col-sm-4 col-xl-2">
-                    <div class="card text-bg-dark mb-2 shadow">
+                    <div id="card_4" class="card_general card_lista card text-bg-dark mb-2 shadow">
                         <img src="./app/img/filosofo.jpg" class="card-img img_filosofo" alt="filosofo">
                         <div class="card-img-overlay d-flex justify-content-end">
                             <table>
@@ -113,7 +113,7 @@
                                 <tbody>
                                     <tr>
                                         <td>Tiempo:</td>
-                                        <td><i class="bi bi-infinity"></i></td>
+                                        <td><span class="temporizador">5s</span></td>
                                     </tr>
                                     <tr>
                                         <td>Proceso:</td>
@@ -131,7 +131,7 @@
                     </div>
                 </div>
                 <div class="col-6 col-sm-4 col-xl-2">
-                    <div class="card text-bg-dark mb-2 shadow">
+                    <div id="card_5" class="card_general card_lista card text-bg-dark mb-2 shadow">
                         <img src="./app/img/filosofo.jpg" class="card-img img_filosofo" alt="filosofo">
                         <div class="card-img-overlay d-flex justify-content-end">
                             <table>
@@ -143,7 +143,7 @@
                                 <tbody>
                                     <tr>
                                         <td>Tiempo:</td>
-                                        <td><i class="bi bi-infinity"></i></td>
+                                        <td><span class="temporizador">5s</span></td>
                                     </tr>
                                     <tr>
                                         <td>Proceso:</td>
@@ -164,34 +164,9 @@
         </section>
     </header>
     <section class="container_mantel">
-        <div class="container row w-100">
-            <div class="col-6 col-sm-4">
-                <div class="card_activa card text-bg-dark mb-2 shadow">
-                        <img src="./app/img/filosofo.jpg" class="card-img img_filosofo_activa" alt="filosofo">
-                        <div class="card-img-overlay d-flex justify-content-end">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th class="card-title">Filosofo</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Tiempo:</td>
-                                        <td><i class="bi bi-infinity"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Proceso:</td>
-                                        <td>50%</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Estado:</td>
-                                        <td>Comiendo</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                </div>
+        <div class="row w-100">
+            <div id="div_container_card_lista" class="col-6 col-sm-4">
+                
             </div>
             <div class="col-6 col-sm-4">
                 <div class="row d-flex justify-content-between comedor">
@@ -203,171 +178,44 @@
             <div class="col-6 col-sm-4">
                 <div class="row">
                     <div id="container_card_espera_1" class="col grid">
-                        <div class="col-3 container_card_espera">
-                            <div class="card_espera card text-bg-dark mb-2 shadow">
-                                <img src="./app/img/filosofo.jpg" class="card-img img_filosofo_espera" alt="filosofo">
-                                <div class="card-img-overlay d-flex justify-content-end">
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th class="card-title">Filosofo</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Tiempo:</td>
-                                                <td><i class="bi bi-infinity"></i></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Proceso:</td>
-                                                <td>50%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Estado:</td>
-                                                <td>Comiendo</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                        </div>
-                        </div>
-                        <div class="col-3 container_card_espera">
-                            <div class="card_espera card text-bg-dark mb-2 shadow">
-                                <img src="./app/img/filosofo.jpg" class="card-img img_filosofo_espera" alt="filosofo">
-                                <div class="card-img-overlay d-flex justify-content-end">
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th class="card-title">Filosofo</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Tiempo:</td>
-                                                <td><i class="bi bi-infinity"></i></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Proceso:</td>
-                                                <td>50%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Estado:</td>
-                                                <td>Comiendo</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                        </div>
-                        </div>
-                        <div class="col-3 container_card_espera">
-                            <div class="card_espera card text-bg-dark mb-2 shadow">
-                                <img src="./app/img/filosofo.jpg" class="card-img img_filosofo_espera" alt="filosofo">
-                                <div class="card-img-overlay d-flex justify-content-end">
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th class="card-title">Filosofo</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Tiempo:</td>
-                                                <td><i class="bi bi-infinity"></i></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Proceso:</td>
-                                                <td>50%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Estado:</td>
-                                                <td>Comiendo</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                        </div>
-                        </div>
                     </div>
                     <div id="container_card_espera_2" class="col grid" >
-                        <div class="col-3 container_card_espera">
-                            <div class="card_espera card text-bg-dark mb-2 shadow">
-                                <img src="./app/img/filosofo.jpg" class="card-img img_filosofo_espera" alt="filosofo">
-                                <div class="card-img-overlay d-flex justify-content-end">
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th class="card-title">Filosofo</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Tiempo:</td>
-                                                <td><i class="bi bi-infinity"></i></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Proceso:</td>
-                                                <td>50%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Estado:</td>
-                                                <td>Comiendo</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                        </div>
-                        </div>
-                        <div class="col-3 container_card_espera">
-                            <div class="card_espera card text-bg-dark mb-2 shadow">
-                                <img src="./app/img/filosofo.jpg" class="card-img img_filosofo_espera" alt="filosofo">
-                                <div class="card-img-overlay d-flex justify-content-end">
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th class="card-title">Filosofo</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Tiempo:</td>
-                                                <td><i class="bi bi-infinity"></i></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Proceso:</td>
-                                                <td>50%</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Estado:</td>
-                                                <td>Comiendo</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                        </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="container_controles w-100">
-        <div class="container d-flex justify-content-evenly row ">
-            <div class="col">
-                <div class="btn-group" role="group" aria-label="Basic example">
-                    <button type="button" class="btn btn-primary"><i class="bi bi-play-fill"></i></button>
-                    <button type="button" class="btn btn-primary"><i class="bi bi-pause-fill"></i></button>
-                    <button type="button" class="btn btn-primary"><i class="bi bi-arrow-counterclockwise"></i>
-                    </button>
-                </div>  
-            </div>
-            <div class="col">
+    <section class="container_controles">
+        <div class="container_col_c d-flex justify-content-between  row ">
+            <div class="col_c col">
                 <div class="btn-group-horizontal" role="group" aria-label="Horizontal radio toggle button group">
-                    <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio1" autocomplete="off" checked>
-                    <label class="btn btn-outline-danger" for="vbtn-radio1"><i class="bi bi-infinity"></i></label>
-                    <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio2" autocomplete="off">
-                    <label class="btn btn-outline-danger" for="vbtn-radio2"><i class="bi bi-tornado"></i></label>
-                    <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio3" autocomplete="off">
-                    <label class="btn btn-outline-danger" for="vbtn-radio3"><i class="bi bi-clock-history"></i></label>
+                    <input type="radio" class="btn_play_i btn-check" name="vbtn-radio-c" id="vbtn-radio1" autocomplete="off" checked>
+                    <label class="btn_play btn btn-outline-dark" for="vbtn-radio1">
+                        <i class="bi bi-play-fill"></i>
+                    </label>
+                    <input type="radio" class="btn_play_i btn-check" name="vbtn-radio-c" id="vbtn-radio2" autocomplete="off">
+                    <label class="btn_play btn btn-outline-dark" for="vbtn-radio2">
+                        <i class="bi bi-pause-fill"></i>
+                    </label>
+                    <button id="vbtn-radio3" type="button" class="btn_play btn btn-outline-dark">
+                        <i class="bi bi-arrow-counterclockwise"></i>
+                    </button>
+                </div>      
+            </div>
+            <div class="col_c col">
+                <div class="btn-group-horizontal" role="group" aria-label="Horizontal radio toggle button group">
+                    <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio_p_1" autocomplete="off">
+                    <label class="btn_play btn btn-outline-dark" for="vbtn-radio_p_1">
+                        <i class="bi bi-infinity"></i>
+                    </label>
+                    <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio_p_2" autocomplete="off">
+                    <label class="btn_play btn btn-outline-dark" for="vbtn-radio_p_2">
+                        <i class="bi bi-tornado"></i>
+                    </label>
+                    <input type="radio" class="btn-check" name="vbtn-radio" id="vbtn-radio_p_3" autocomplete="off">
+                    <label class="btn_play btn btn-outline-dark" for="vbtn-radio_p_3">
+                        <i class="bi bi-clock-history"></i>
+                    </label>
                 </div>
             </div>
         </div>
@@ -376,5 +224,6 @@
 
     </footer>
 </body>
+<script src="./app/js/card.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </html>
