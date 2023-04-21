@@ -4,3 +4,6 @@ body{
     width: 100vw;
     height: 100vh;
 }
+.card_random{
+  border: 3px outset var(--rojo);
+}
