@@ -7,6 +7,7 @@ var container_card_proceso = document.querySelector(
 );
 var container_card_espera_1 = document.querySelector('#container_card_espera_1')
 var container_card_espera_2 = document.querySelector('#container_card_espera_2')
+var containers_cards_lista = document.querySelectorAll('.container_card_lista')
 var timeInf = 0;
 function tiempoInf(){
     document.querySelectorAll(".temporizador").forEach(span => {
@@ -21,10 +22,7 @@ function tiempoNormal(){
 document.querySelector("#vbtn-radio1").addEventListener("click", () => {
 	//Aqui va el codigo para el boton de inicio de procesos
 	cardRandom(cards_lista)
-	Math.floor(Math.random() * cards_lista.length);
-	console.log(
-		
-	);
+	
 });
 
 document.querySelector('#vbtn-radio2').addEventListener('click',()=>{
@@ -61,6 +59,18 @@ cards_lista.forEach((card) => {
 		actualizarVarCards();
 	});
 });
+cards_espera.forEach((card) => {
+	card.addEventListener("click", () => {
+		if (container_card_proceso.children.length > 0) {
+			//Si hay un elemento en el area critica
+			areaCriticaEnUso(card);
+		} else {
+			//No hay elementos en el area critica
+			areaCriticaLibre(card);
+		}
+		actualizarVarCards();
+	});
+});
 function areaCriticaEnUso(card) {
 	//Aqui va el codigo para cuando el area critica este en uso
 	card = arreglandoCardEspera(card);
@@ -77,28 +87,51 @@ function areaCriticaEnUso(card) {
 }
 function areaCriticaLibre(card) {
 	//Aqui va el codigo para cuando el area critica este libre
-	card = arreglandoCardActiva(card);
+	card = arreglandoCardAActiva(card);
 	if(timeInf == 0){
 		iniciarTemporizadorActivo(card);
 	}
 	container_card_proceso.appendChild(card);
 }
-function arreglandoCardActiva(card) {
+function arreglandoCardAActiva(card) {
 	card.classList.add("card_activa");
-	img = card.querySelector("img");
 	card.querySelector(".td_estado").innerHTML = "Comiendo...";
 	card.querySelector(".td_proceso").innerHTML = "Corriendo...";
+	img = card.querySelector("img");
+	img.classList.remove("img_filosofo");
+	img.classList.add("img_filosofo_activa");
 	temporizador = card.querySelector(".temporizador");
 	temporizador.classList.add("temporizador_activa");
 	if (card.classList.contains("card_espera")) {
 		card.classList.remove("card_espera");
 		img.classList.remove("img_filosofo_espera");
-		img.classList.add("img_filosofo_activa");
 	}
-	if (card.classList.contains("card_lista")) {
+	if (card.classList.contains("card_lista")){
 		card.classList.remove("card_lista");
-		img.classList.remove("img_filosofo");
-		img.classList.add("img_filosofo_activa");
+	}
+	return card;
+}
+function arreglandoCardALista(card) {
+	card.classList.add("card_lista");
+	card.querySelector(".td_estado").innerHTML = "Hambre";
+	card.querySelector(".td_proceso").innerHTML = "Listo";
+	img = card.querySelector("img");
+	img.classList.add("img_filosofo");
+	temporizador = card.querySelector(".temporizador");
+	if(timeInf == 0){
+		temporizador.innerHTML = "5s";
+	}else{
+		temporizador.innerHTML = '<i class="bi bi-infinity"></i>';
+	}
+	if (card.classList.contains("card_espera")) {
+		card.classList.remove("card_espera");
+		img.classList.remove("img_filosofo_espera");
+		temporizador.classList.remove("temporizador_espera");
+	}
+	if (card.classList.contains("card_activa")) {
+		card.classList.remove("card_activa");
+		img.classList.remove("img_filosofo_activa");
+		temporizador.classList.remove("temporizador_activa");
 	}
 	return card;
 }
@@ -114,25 +147,25 @@ function iniciarTemporizadorActivo(card) {
 		if (tiempoRestanteActiva === 0) {
 			clearInterval(intervalo);
 			// Código a ejecutar al finalizar el temporizador
+			finTemporizadorCardActiva(card);
 		}
 	}, 1000);
 }
 function arreglandoCardEspera(card){
 	card.classList.add("card_espera");
 	img = card.querySelector("img");
-	card.querySelector(".td_estado").innerHTML = "Esperando...";
-	card.querySelector(".td_proceso").innerHTML = "Hambriento";
+	card.querySelector(".td_estado").innerHTML = "Hambriento";
+	card.querySelector(".td_proceso").innerHTML = "Esperando...";
+	img.classList.add("img_filosofo_espera");
 	temporizador= card.querySelector(".temporizador");
 	temporizador.classList.add("temporizador_espera");
 	if (card.classList.contains("card_activa")) {
 		card.classList.remove("card_activa");
 		img.classList.remove("img_filosofo_activa");
-		img.classList.add("img_filosofo_espera");
 	}
 	if (card.classList.contains("card_lista")) {
 		card.classList.remove("card_lista");
 		img.classList.remove("img_filosofo");
-		img.classList.add("img_filosofo_espera");
 	}
 	return card;
 };
@@ -141,6 +174,10 @@ function iniciarTemporizadorEspera(card) {
 	let tiempoRestanteActiva = 5;
 	const temporizadorActiva = card.querySelector(".temporizador_espera");
 	temporizadorActiva.innerHTML = tiempoRestanteActiva + "s";
+	if (!(container_card_proceso.children.length > 0)) {
+		//Si no hay card activa
+		card.click();
+	}
 	const intervalo = setInterval(() => {
 		tiempoRestanteActiva--;
 		temporizadorActiva.textContent = tiempoRestanteActiva + "s";
@@ -148,6 +185,7 @@ function iniciarTemporizadorEspera(card) {
 		if (tiempoRestanteActiva === 0) {
 			clearInterval(intervalo);
 			// Código a ejecutar al finalizar el temporizador
+			finTemporizadorCardEspera(card);
 		}
 	}, 1000);
 }
@@ -162,9 +200,8 @@ function cardRandom(cards) {
 		if (count >= cards.length * 3) {
 			clearInterval(intervalId);
 			currCard.classList.remove("card_random");
-			document
-				.querySelector(`#card_${Math.floor(Math.random() * cards.length)}`)
-				.click();
+			cards[Math.floor(Math.random() * cards.length)].click();
+			cards_lista.forEach((card) => card.click());
 		}
 	}, 400);
 }
@@ -182,4 +219,37 @@ function actualizarVarCards() {
 	 container_card_espera_2 = document.querySelector(
 		"#container_card_espera_2"
 	);
+	containers_cards_lista = document.querySelectorAll(
+		".container_card_lista"
+	);
+}
+function finTemporizadorCardActiva(card){
+	//Aqui va el codigo para cuando el temporizador termine, para la card activa
+	card = arreglandoCardALista(card);
+	const cardNumber = card.id.slice(5);
+	containers_cards_lista[cardNumber - 1].appendChild(card);
+	cards_espera[0].click();
+	actualizarVarCards();
+}
+function finTemporizadorCardEspera(card){
+	//Aqui va el codigo para cuando el temporizador termine, para la card activa
+	if (!(container_card_proceso.children.length > 0)) {
+		//Si no hay card activa
+		card.click();
+	}else{
+		let siguienteIndice = null;
+		for (let i = 0; i < cards_espera.length; i++) {
+			if (cards_espera[i].id === card.id) {
+				siguienteIndice = i + 1;
+				break;
+			}
+		}
+		if(siguienteIndice === null) {
+
+		}else{
+			cards_espera[siguienteIndice].querySelector(".td_estado").innerHTML += "+" ;
+			finTemporizadorCardActiva(card);
+		}
+	}
+	actualizarVarCards();
 }
