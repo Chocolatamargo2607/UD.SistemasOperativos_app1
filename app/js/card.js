@@ -11,7 +11,9 @@ cards_lista.forEach((card) => {
 	card.addEventListener("click", () => {
 		if(card.classList.contains("card_activa")){return;}
 		if(card.classList.contains("card_lista")){
-			card.querySelector(".almacen_1").appendChild(document.createElement("li"));
+			let li = document.createElement("li");
+			li.innerHTML = '*';
+			card.querySelector(".almacen").appendChild(li);
 		}
 		if (container_card_proceso.children.length > 0) {
 			//Si hay un elemento en el area critica
@@ -86,8 +88,7 @@ function arreglandoCardAActiva(card) {
 function arreglandoCardALista(card) {
 	card.querySelector(".td_estado").innerHTML = "Hambre";
 	card.querySelector(".td_proceso").innerHTML = "Listo";
-	card.querySelector(".almacen_1").innerHTML = "";
-	card.querySelector(".almacen_2").innerHTML = "";
+	card.querySelector(".almacen").innerHTML = "";
 	img = card.querySelector("img");
 	img.classList.add("img_filosofo");
 	temporizador = card.querySelector(".temporizador");
@@ -139,7 +140,7 @@ function cardRandom(cards) {
 			clearInterval(intervalId);
 			currCard.classList.remove("card_random");
 			cards[Math.floor(Math.random() * cards.length)].click();
-			cards_lista.forEach((card) => card.click());
+			cards_lista.forEach(card => {card.click();});
 		}
 	}, 400);
 }
@@ -155,9 +156,11 @@ function actualizarVarCards() {
 }
 function iniciarTemporizadorActivo(card) {
 	// Aquí va el código para iniciar el temporizador de la card activa
-	let tiempoRestanteActiva = 5;
+	let tiempoRestanteActiva =
+		5 * parseInt(card.querySelector(".almacen").children.length);
 	const temporizadorActiva = card.querySelector(".temporizador_activa");
 	temporizadorActiva.innerHTML = tiempoRestanteActiva + "s";
+	card.classList.contains("card_lista") ?clearInterval(intervalo):null;
 	const intervalo = setInterval(() => {
 		tiempoRestanteActiva--;
 		temporizadorActiva.textContent = tiempoRestanteActiva + "s";
@@ -172,16 +175,16 @@ function iniciarTemporizadorEspera(card) {
 	// Aquí va el código para iniciar el temporizador de la card activa
 	let tiempoRestanteActiva = 5;
 	const temporizadorActiva = card.querySelector(".temporizador_espera");
-	if (timeInf == 0) {
-		temporizadorActiva.innerHTML = tiempoRestanteActiva + "s";
-	}
-	
+	timeInf == 0 ? temporizadorActiva.innerHTML = tiempoRestanteActiva + "s":null;
 	const intervalo = setInterval(() => {
+		card.classList.contains("card_lista") ||
+		card.classList.contains("card_activa")
+			? clearInterval(intervalo)
+			: null;
 		tiempoRestanteActiva--;
-		if (timeInf == 0) {
-			temporizadorActiva.textContent = tiempoRestanteActiva + "s";
-		}
-		if(card.classList.contains("card_lista")){clearInterval(intervalo);}
+		timeInf == 0
+			? temporizadorActiva.innerHTML = tiempoRestanteActiva + "s"
+			: null;
 		if (!card_activa && card.classList.contains("card_espera")) {
 			//Si no hay card activa
 			clearInterval(intervalo);
@@ -227,27 +230,33 @@ function finTemporizadorCardEspera(card){
 			}
 		}else{
 			iniciarTemporizadorEspera(card);
+			card.querySelector('.almacen').children.length == cards_lista.length+1 ? eliminarCard(card):null;
 		}
 	}
 	actualizarVarCards();
 }
 function agregarProcesoCard(card,cardSiguiente){
 	//Aqui va el codigo para agregar el proceso a la card
-	nuProcesosCard = parseInt(card.querySelector(".almacen_1").children.length+card.querySelector(".almacen_2").children.length);
-	for(let i=0;i<nuProcesosCard;i++){
-		cardSiguiente.querySelector(".almacen_1").children.length < 2
-			?cardSiguiente.querySelector(".almacen_1").appendChild(document.createElement("li"))
-			:cardSiguiente.querySelector(".almacen_2").appendChild(document.createElement("li"));
+	nuProcesosCard = parseInt(card.querySelector(".almacen").children.length);
+	console.log(card.id,'Entra proceso a -> ',cardSiguiente.id);
+	for(let i=0; i < nuProcesosCard ; i++){
+		let li = document.createElement("li");
+		li.innerHTML = "*";
+		cardSiguiente.querySelector(".almacen").appendChild(li);
 	}
 	
 	
 }
+function eliminarCard(card){
+	//Aqui va el codigo para eliminar la card
+	card.classList.add("card_eliminar");
+	setTimeout(() => {
+		card.remove();
+	}, 4000);
+}
 document.querySelector("#vbtn-radio1").addEventListener("click", () => {
 	//Aqui va el codigo para el boton de inicio de procesos
 	cardRandom(cards_lista);
-});
-document.querySelector("#vbtn-radio2").addEventListener("click", () => {
-	//Aqui va el codigo para el boton de pausa de procesos
 });
 document.querySelector("#vbtn-radio3").addEventListener("click", () => {
 	//Aqui va el codigo para reiniciar el proceso
@@ -257,9 +266,6 @@ document.querySelector("#vbtn-radio_p_1").addEventListener("click", () => {
 	//Aqui va el codigo de tiempo infinito
 	timeInf = 1;
 	tiempoInf();
-});
-document.querySelector("#vbtn-radio_p_2").addEventListener("click", () => {
-	//Aqui va el codigo de todos los filososfos al mismo tiempo a comer
 });
 document.querySelector("#vbtn-radio_p_3").addEventListener("click", () => {
 	//Aqui va el codigo de tiempo normal

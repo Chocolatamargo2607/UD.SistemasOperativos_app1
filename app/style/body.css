@@ -7,3 +7,10 @@ body{
 .card_random{
   border: 3px outset var(--rojo);
 }
+.almacen{
+  list-style: none;
+}
+.almacen>li{
+  display: inline-block;
+  margin-right: 10px;
+}
