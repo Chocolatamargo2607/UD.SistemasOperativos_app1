@@ -230,7 +230,9 @@ function finTemporizadorCardEspera(card){
 			}
 		}else{
 			iniciarTemporizadorEspera(card);
-			card.querySelector('.almacen').children.length == cards_lista.length+1 ? eliminarCard(card):null;
+			if((card.querySelector('.almacen').children.length != 0 && cards_espera.length == 1)){ 
+				eliminarCard(card)
+			};
 		}
 	}
 	actualizarVarCards();
